@@ -1,0 +1,26 @@
+import csv
+import random
+from datetime import datetime, timedelta
+
+# نام فایل CSV
+csv_file_path = 'test_results.csv'
+
+# تعداد رکوردهایی که می‌خواهید اضافه کنید
+num_records = 20
+
+# تولید داده‌های تصادفی و نوشتن در فایل CSV
+with open(csv_file_path, 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerow(['Timestamp', 'Activity', 'Status'])  # نوشتن سطر هدر
+
+    for _ in range(num_records):
+        # تولید زمان تصادفی
+        timestamp = datetime.now() - timedelta(days=random.randint(0, 30), hours=random.randint(0, 23),
+                                               minutes=random.randint(0, 59))
+        activity = f"Activity {random.randint(1, 10)}"
+        status = random.choice(['موفقیت‌آمیز', 'ناموفق'])
+
+        # نوشتن داده‌ها در فایل CSV
+        csv_writer.writerow([timestamp.strftime("%Y-%m-%d %H:%M:%S"), activity, status])
+
+print(f"{num_records} رکورد به فایل {csv_file_path} اضافه شد.")
