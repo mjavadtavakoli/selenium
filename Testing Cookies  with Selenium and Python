@@ -1,0 +1,22 @@
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get('https://gooshishop.com')
+
+cookie = {'name': 'test_cookie', 'value': '12345', 'secure': True, 'httpOnly': True}
+driver.add_cookie(cookie)
+
+cookies = driver.get_cookies()
+print('Cookies after adding:', cookies)
+
+driver.add_cookie({'name': 'test_cookie', 'value': '123'})
+updated_cookie = driver.get_cookie('test_cookie')
+print('Updated cookie:', updated_cookie)
+
+
+driver.delete_cookie('test_cookie')
+cookies_after_deletion = driver.get_cookies()
+print('Cookies after deletion:', cookies_after_deletion)
+
+driver.quit()
