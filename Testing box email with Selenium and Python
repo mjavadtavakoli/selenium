@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+
+
+driver = webdriver.Chrome()
+
+base_url = "https://snapp.ir"
+
+driver.get(f"{base_url}")
+
+search_fild = driver.find_element(By.XPATH, '//*[@id="footer"]/div[1]/div/div[2]/div[1]/form/div/div/div/div/div')
+search_fild.send_keys("javadtavakuli641@gmail.com")
+search_fild.send_keys(Keys.RETURN)
+
+time.sleep(2)
