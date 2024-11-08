@@ -2,7 +2,7 @@ from selenium import webdriver
 
 driver = webdriver.Chrome()
 
-driver.get('https://gooshishop.com')
+driver.get("https://snapp.ir")
 
 cookie = {'name': 'test_cookie', 'value': '12345', 'secure': True, 'httpOnly': True}
 driver.add_cookie(cookie)
